@@ -1,5 +1,12 @@
+//app/page.js - root route required heading + link to week2
+import Link from "next/link";
+
 export default function Home() {
   return (
-    <h1>Home</h1>
-  );
+    <main>
+      <h1>CPRG 306: Web Development 2 - Assignments</h1>
+      <Link href="/week-2">Week 2 </Link>
+    </main>
+    
+  )
 }
