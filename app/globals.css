@@ -1,1 +1,21 @@
 @import "tailwindcss";
+.hyperlink {
+  color: #0000ee;
+}
+
+.hyperlink:hover {
+  text-decoration: underline;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding-bottom: 12px;
+}
+
+.id-card {
+    display: inline-block;
+    margin-bottom: 16px;
+    background-color: lightgrey;
+    padding: 10px;
+}

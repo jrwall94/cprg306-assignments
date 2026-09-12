@@ -1,10 +1,12 @@
-import Link from 'next/link';
+import Link from "next/link";
 
-export default function StudentInfo() {
+export default function StudentInfo({ name, githubUsername }) {
   return (
-    <main>
-      <p>Jonathan Wall</p>
-      <Link href="https://github.com/jrwall94">https://github.com/jrwall94</Link>
-    </main>
+    <div className="id-card">
+      <p>{name}</p>
+      <Link href={`https://github.com/${githubUsername}`} className="hyperlink">
+        GitHub Link
+      </Link>
+    </div>
   );
 }
