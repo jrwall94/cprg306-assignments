@@ -15,7 +15,7 @@
 
 .id-card {
     display: inline-block;
-    margin-bottom: 16px;
+    margin: 8px;
     background-color: lightgrey;
     padding: 10px;
 }

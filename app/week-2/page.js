@@ -7,6 +7,8 @@ export default function Page() {
       <h1 className="title">Shopping List</h1>
       <section className="flex">
         <StudentInfo name="Jonathan Wall" githubUsername="jrwall94" />
+        <StudentInfo name="Ebube Vincent" githubUsername="monterovincent" />
+        <StudentInfo name="David Azuka" githubUsername="mrazuka" />
       </section>
       <Link href="/" className="hyperlink">
         Go Home
