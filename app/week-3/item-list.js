@@ -74,7 +74,7 @@ const item12 = {
   quantity: 4,
   category: "household",
 };
-
+return (
 <ul>
     <Item name={item1.name} quantity={item1.quantity} category={item1.category} />
     <Item name={item2.name} quantity={item2.quantity} category={item2.category} />
@@ -89,5 +89,6 @@ const item12 = {
     <Item name={item11.name} quantity={item11.quantity} category={item11.category} />
     <Item name={item12.name} quantity={item12.quantity} category={item12.category} />
 </ul>
+);
 
 }
