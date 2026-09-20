@@ -1,5 +1,9 @@
 import ItemList from "./item-list";
 
+export const metadata= {
+    title: "Shopping List",
+};
+
 export default function Page() {
     return (
         <main className="bg-slate-950 min-h-screen p-4">
