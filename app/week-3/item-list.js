@@ -79,13 +79,15 @@ export default function ItemList() {
     ];
 
     return (
-        <main>
-            <h1 className="title">Shopping List</h1>
-            <ul>
-                {items.map((item, index) => (
-                    <Item key={index} name={item.name} quantity={item.quantity} category={item.category} />
-                ))}
-            </ul>
+        <main className="min-h-screen bg-slate-50 px-4 py-10 sm:px-8">
+            <div className="mx-auto max-w-3xl">
+                <h1 className="mb-8 text-center text-3xl font-bold tracking-tight text-slate-800">Shopping List</h1>
+                <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                    {items.map((item, index) => (
+                        <Item key={index} name={item.name} quantity={item.quantity} category={item.category} />
+                    ))}
+                </ul>
+            </div>
         </main>
     );
 }
