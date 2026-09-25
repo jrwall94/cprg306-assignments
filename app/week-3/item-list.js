@@ -65,7 +65,7 @@ export default function ItemList() {
   ];
 
   return (
-    <ul>
+    <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
       {items.map((item) => (
         <Item key={item.name} {...item} />
       ))}
