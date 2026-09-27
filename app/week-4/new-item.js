@@ -20,5 +20,25 @@ export default function NewItem() {
         }
     }
 
-  return <p>NewItem</p>;
+  return (
+    <div className="flex items-center gap-4 bg-slate-800 p-4 rounded-md max-w-xs">
+      <button
+        onClick={decrement}
+        disabled={quantity === 1}
+        className="bg-slate-700 text-sky-100 w-8 h-8 rounded-md hover:bg-slate-600 disabled:opacity-30"
+      >
+        −
+      </button>
+
+      <span className="text-sky-100 text-lg w-6 text-center">{quantity}</span>
+
+      <button
+        onClick={increment}
+        disabled={quantity === 20}
+        className="bg-slate-700 text-sky-100 w-8 h-8 rounded-md hover:bg-slate-600 disabled:opacity-30"
+      >
+        +
+      </button>
+    </div>
+  );
 }
