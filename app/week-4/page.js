@@ -1,11 +1,14 @@
-//app/week-4/page.js , renders new-item.js component
+"use client";
 
-import NewItem from "./new-item";
+import { useState } from "react";
+import Counter from "./counter";
 
 export default function Page() {
+  const [quantity, setQuantity] = useState(1);
+
   return (
     <main className="p-4 min-h-screen flex items-center justify-center">
-      <NewItem />
+      <Counter quantity={quantity} setQuantity={setQuantity} />
     </main>
   );
 }
