@@ -1,47 +1,41 @@
+// app/week-4/new-item.js
 "use client";
 import { useState } from "react";
 
 export default function NewItem() {
+  //initialize quantity state
   const [quantity, setQuantity] = useState(1);
-  const [isMin, setIsMin] = useState(true);
-  const [isMax, setIsMax] = useState(false);
 
-  const increment = () => {
+  //increment and decrement  logic
+
+  function increment() {
     if (quantity < 20) {
       setQuantity(quantity + 1);
     }
-    if (quantity == 19) {
-      setIsMax(true);
-    }
-    if (quantity == 1) {
-      setIsMin(false);
-    }
-  };
+  }
 
-  const decrement = () => {
+  function decrement() {
     if (quantity > 1) {
       setQuantity(quantity - 1);
     }
-    if (quantity == 2) {
-      setIsMin(true);
-    }
-    if (quantity == 20) {
-      setIsMax(false);
-    }
-  };
+  }
 
   return (
-    <div className="flex p-7 max-w-2xs bg-teal-300 mx-auto justify-between mt-10">
-      <p className="my-auto border-2 bg-white p-3">{quantity}</p>
+    <div className="flex items-center gap-4 bg-slate-800 p-4 rounded-md max-w-xs">
       <button
         onClick={decrement}
-        className={`p-3 ${isMin ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"} `}
+        disabled={quantity === 1}
+        className="bg-slate-700 text-sky-100 w-8 h-8 rounded-md hover:bg-slate-600 disabled:opacity-30 disabled:cursor-not-allowed"
       >
-        -
+        −
       </button>
+
+      <span className="text-sky-100 text-lg w-6 text-center">{quantity}</span>
+
       <button
         onClick={increment}
-        className={`p-3 ${isMax ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"}`}
+        disabled={quantity === 20}
+        className="bg-slate-700 text-sky-100 w-8 h-8 rounded-md hover:bg-slate-600 disabled:opacity-30 disabled:cursor-not-allowed"
       >
         +
       </button>
