@@ -6,7 +6,7 @@ import { useState } from "react";
 export default function NewItem() {
   const [quantity, setQuantity] = useState(1);
   const [name, setName] = useState("");
-  const [category, setCategory] = useState("produce"); // new
+  const [category, setCategory] = useState("produce");
 
   function increment() {
     if (quantity < 20) {
@@ -20,17 +20,33 @@ export default function NewItem() {
     }
   }
 
+  // new: submission handler
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    const item = { name, quantity, category };
+    console.log(item);
+    alert(`Added: ${item.name}, Quantity: ${item.quantity}, Category: ${item.category}`);
+
+    setName("");
+    setQuantity(1);
+    setCategory("produce");
+  }
+
   return (
-    <div className="flex flex-col gap-4 bg-slate-800 p-4 rounded-md max-w-xs">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col gap-4 bg-slate-800 p-4 rounded-md max-w-xs"
+    >
       <input
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
         placeholder="Item name"
+        required
         className="bg-slate-700 text-sky-100 p-2 rounded-md"
       />
 
-      {/* new: category dropdown, controlled by category/setCategory */}
       <select
         value={category}
         onChange={(e) => setCategory(e.target.value)}
@@ -51,6 +67,7 @@ export default function NewItem() {
 
       <div className="flex items-center gap-4">
         <button
+          type="button"
           onClick={decrement}
           disabled={quantity === 1}
           className="bg-slate-700 text-sky-100 w-8 h-8 rounded-md hover:bg-slate-600 disabled:opacity-30"
@@ -59,6 +76,7 @@ export default function NewItem() {
         </button>
         <span className="text-sky-100 text-lg w-6 text-center">{quantity}</span>
         <button
+          type="button"
           onClick={increment}
           disabled={quantity === 20}
           className="bg-slate-700 text-sky-100 w-8 h-8 rounded-md hover:bg-slate-600 disabled:opacity-30"
@@ -66,6 +84,14 @@ export default function NewItem() {
           +
         </button>
       </div>
-    </div>
+
+      {/* new: submit button */}
+      <button
+        type="submit"
+        className="bg-sky-700 text-sky-100 p-2 rounded-md hover:bg-sky-600"
+      >
+        Add Item
+      </button>
+    </form>
   );
 }
