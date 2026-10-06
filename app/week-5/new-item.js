@@ -5,7 +5,8 @@ import { useState } from "react";
 
 export default function NewItem() {
   const [quantity, setQuantity] = useState(1);
-  const [name, setName] = useState(""); // new: name field state
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState("produce"); // new
 
   function increment() {
     if (quantity < 20) {
@@ -20,9 +21,7 @@ export default function NewItem() {
   }
 
   return (
-    // was: flex items-center gap-4 — now flex-col to stack input above the quantity row
     <div className="flex flex-col gap-4 bg-slate-800 p-4 rounded-md max-w-xs">
-      {/* new: name input, controlled by name/setName */}
       <input
         type="text"
         value={name}
@@ -31,7 +30,25 @@ export default function NewItem() {
         className="bg-slate-700 text-sky-100 p-2 rounded-md"
       />
 
-      {/* unchanged: quantity row, same as week 4, now wrapped in its own flex row */}
+      {/* new: category dropdown, controlled by category/setCategory */}
+      <select
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+        className="bg-slate-700 text-sky-100 p-2 rounded-md"
+      >
+        <option value="produce">Produce</option>
+        <option value="dairy">Dairy</option>
+        <option value="bakery">Bakery</option>
+        <option value="meat">Meat</option>
+        <option value="frozen foods">Frozen Foods</option>
+        <option value="canned goods">Canned Goods</option>
+        <option value="dry goods">Dry Goods</option>
+        <option value="beverages">Beverages</option>
+        <option value="snacks">Snacks</option>
+        <option value="household">Household</option>
+        <option value="other">Other</option>
+      </select>
+
       <div className="flex items-center gap-4">
         <button
           onClick={decrement}
