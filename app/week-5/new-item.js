@@ -5,6 +5,7 @@ import { useState } from "react";
 export default function NewItem() {
   //initialize quantity state
   const [quantity, setQuantity] = useState(1);
+  const [name, setName] = useState("");
 
   //increment and decrement  logic
 
