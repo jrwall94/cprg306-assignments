@@ -1,11 +1,7 @@
-// app/week-4/new-item.js
 "use client";
-import { useState } from "react";
 
-export default function NewItem() {
-  //initialize quantity state
-  const [quantity, setQuantity] = useState(1);
-
+//State lifted up to parent component
+export default function Counter({ quantity, setQuantity }) {
   //increment and decrement  logic
 
   function increment() {
@@ -23,6 +19,7 @@ export default function NewItem() {
   return (
     <div className="flex items-center gap-4 bg-slate-800 p-4 rounded-md max-w-xs">
       <button
+        type="button"
         onClick={decrement}
         disabled={quantity === 1}
         className="bg-slate-700 text-sky-100 w-8 h-8 rounded-md hover:bg-slate-600 disabled:opacity-30 disabled:cursor-not-allowed"
@@ -33,6 +30,7 @@ export default function NewItem() {
       <span className="text-sky-100 text-lg w-6 text-center">{quantity}</span>
 
       <button
+        type="button"
         onClick={increment}
         disabled={quantity === 20}
         className="bg-slate-700 text-sky-100 w-8 h-8 rounded-md hover:bg-slate-600 disabled:opacity-30 disabled:cursor-not-allowed"

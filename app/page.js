@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Assignment from "./assignment";
 
 export default function Home() {
@@ -8,6 +7,7 @@ export default function Home() {
       <Assignment week={2} />
       <Assignment week={3} />
       <Assignment week={4} />
+      <Assignment week={5} />
     </main>
   );
 }
