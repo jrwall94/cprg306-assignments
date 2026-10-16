@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Assignment from "./assignment";
 
 export default function Home() {
