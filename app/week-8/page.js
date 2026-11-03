@@ -16,8 +16,6 @@ export default function Page() {
       .replace(/(\p{Emoji_Presentation}|\p{Extended_Pictographic})/gu, "")
       .trim()
       .replace(" ", "_");
-    console.log(name);
-    console.log(cleanedName);
     setSelectedItem(cleanedName);
   };
 
@@ -39,6 +37,11 @@ export default function Page() {
           <h1 className="mb-8 text-center text-3xl font-bold tracking-tight text-slate-800">
             Recipes:
           </h1>
+          {selectedItem && (
+            <h2 className="text-xl mb-5">
+              Containing {selectedItem.replace("_", " ")}:
+            </h2>
+          )}
           <MealIdeas ingredient={selectedItem} />
         </section>
       </div>

@@ -23,7 +23,7 @@ export default function MealIdeas({ ingredient }) {
   }, [ingredient]);
 
   return (
-    <div>
+    <div className="grid grid-cols-1 gap-3 max-w-75">
       {meals.map((meal) => (
         <Meal
           key={meal.idMeal}

@@ -2,7 +2,7 @@ export default function Item({ name, quantity, category, onSelect }) {
   return (
     <li
       onClick={() => onSelect(name)}
-      className="flex items-center justify-between rounded-lg bg-white p-4 shadow-sm ring-1 ring-slate-200 transition hover:shadow-md hover:bg-slate-200"
+      className="flex items-center justify-between rounded-lg bg-white p-4 shadow-sm ring-1 ring-slate-200 transition hover:shadow-md hover:bg-slate-200 active:bg-slate-500"
     >
       <div>
         <p className="font-medium text-slate-800">{name}</p>
