@@ -1,12 +1,15 @@
 import Link from "next/link";
 
-export default function StudentInfo({ name, githubUsername }) {
+export default function StudentInfo() {
   return (
-    <div className="inline-block m-2 p-3 bg-gray-300">
-      <p>{name}</p>
-      <Link href={`https://github.com/${githubUsername}`} className="hyperlink">
-        GitHub Link
+    <main>
+      <h1>Wallace Ip</h1>
+      <Link
+        href="https://github.com/wallaceip/cprg306-assignments"
+        className="hover:text-amber-400 text-amber-200"
+      >
+        GitHub Repo
       </Link>
-    </div>
+    </main>
   );
 }

@@ -1,83 +1,91 @@
 "use client";
 
-import Item from "./item";
 import { useState } from "react";
+import Item from "./item";
 
-export default function ItemList({ items }) {
+export default function ItemList({ items = [] }) {
   const [sortBy, setSortBy] = useState("name");
-  const [isGrouped, setIsGrouped] = useState(false);
 
-  const sortedItems = [...items].sort((a, b) =>
-    a[sortBy].localeCompare(b[sortBy]),
-  );
+  // 1. Create a sorted copy of the items array
+  const sortedItems = [...items].sort((a, b) => {
+    const sortField = sortBy === "category" ? "category" : "name";
+    return a[sortField].localeCompare(b[sortField]);
+  });
 
-  const groupedItems = sortedItems.reduce((accumulator, currentItem) => {
-    const key = currentItem.category;
-    //Initialize array if it doesn't already exist for current category
-    if (!accumulator[key]) {
-      accumulator[key] = [];
+  // 2. Group the sorted items into an object by category
+  const groupByCategory = sortedItems.reduce((accumulator, item) => {
+    if (!accumulator[item.category]) {
+      accumulator[item.category] = [];
     }
-    //Add current item into the correct category
-    accumulator[key].push(currentItem);
+    accumulator[item.category].push(item);
     return accumulator;
-    //Start with an empty array each time
   }, {});
 
+  // 3. Get an alphabetical list of the category names
+  const categories = Object.keys(groupByCategory).sort();
+
+  const getTabClass = (type) =>
+    `flex-1 py-2 px-3 text-xs font-semibold rounded-lg transition-all duration-150 ${
+      sortBy === type
+        ? "bg-amber-500 text-slate-950 shadow-sm font-bold"
+        : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/60"
+    }`;
+
   return (
-    <section>
-      <div className="flex mb-5 gap-5 justify-center">
+    <div className="w-full space-y-5">
+      {/* Unified Segmented Sort Control */}
+      <div className="bg-slate-900/90 border border-slate-800 p-1.5 rounded-xl flex items-center gap-1">
         <button
-          onClick={() => {
-            setSortBy("name");
-            setIsGrouped(false);
-          }}
-          className={`px-2 py-1 rounded-lg ${sortBy == "name" && !isGrouped ? "bg-slate-700 text-white" : "bg-slate-300"}`}
+          type="button"
+          onClick={() => setSortBy("name")}
+          className={getTabClass("name")}
         >
-          Sort by name
+          Sort by Name
         </button>
         <button
-          onClick={() => {
-            setSortBy("category");
-            setIsGrouped(false);
-          }}
-          className={`px-2 py-1 rounded-lg ${sortBy == "category" && !isGrouped ? "bg-slate-700 text-white" : "bg-slate-300"}`}
+          type="button"
+          onClick={() => setSortBy("category")}
+          className={getTabClass("category")}
         >
-          Sort by category
+          Sort by Category
         </button>
         <button
-          onClick={() => {
-            setSortBy("category");
-            setIsGrouped(true);
-          }}
-          className={`px-2 py-1 rounded-lg ${isGrouped == true ? "bg-slate-700 text-white" : "bg-slate-300"}`}
+          type="button"
+          onClick={() => setSortBy("grouped")}
+          className={getTabClass("grouped")}
         >
-          Group by category
+          Group by Category
         </button>
       </div>
-      {/* Display regular item list if items shouldn't be grouped */}
-      {!isGrouped && (
-        <ul className="grid grid-cols-1 gap-3 max-w-md m-auto">
+
+      {/* Render Grouped View if "grouped" is selected, otherwise Flat List */}
+      {sortBy === "grouped" ? (
+        <div className="space-y-6">
+          {categories.map((category) => (
+            <div key={category} className="space-y-2.5">
+              <div className="flex items-center justify-between px-1">
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-amber-500">
+                  {category}
+                </h3>
+                <span className="text-xs text-slate-500 font-medium">
+                  {groupByCategory[category].length}
+                </span>
+              </div>
+              <ul className="w-full space-y-2.5">
+                {groupByCategory[category].map((item) => (
+                  <Item key={item.id} item={item} />
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <ul className="w-full space-y-2.5">
           {sortedItems.map((item) => (
-            <Item key={item.id} {...item} />
+            <Item key={item.id} item={item} />
           ))}
         </ul>
       )}
-      {/* Display grouped item list if grouped is selected */}
-      {isGrouped && (
-        <div className="grid grid-cols-1 gap-3 max-w-md m-auto">
-          {Object.entries(groupedItems).map(([category, items]) => (
-            <ul
-              key={category}
-              className="font-bold capitalize flex flex-col gap-1"
-            >
-              {category}
-              {items.map((item) => (
-                <Item key={item.id} {...item} />
-              ))}
-            </ul>
-          ))}
-        </div>
-      )}
-    </section>
+    </div>
   );
 }

@@ -1,5 +1,5 @@
-import ItemList from "./item-list";
-import Home from "../home";
+import ItemList from "./item-list"
+import BackHome from "../components/backhome";
 
 export const metadata = {
   title: "Shopping List",
@@ -7,14 +7,10 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <main className="min-h-screen bg-slate-50 px-4 py-10 sm:px-8">
-      <section className="mx-auto max-w-3xl">
-        <h1 className="mb-8 text-center text-3xl font-bold tracking-tight text-slate-800">
-          Shopping List
-        </h1>
-        <ItemList />
-      </section>
-      <Home />
+    <main className="bg-slate-950 p-6 flex flex-col items-center">
+      <h1  className="text-amber-500 text-4xl font-bold">Shopping List</h1>
+      <ItemList />
+      <BackHome />
     </main>
   );
 }

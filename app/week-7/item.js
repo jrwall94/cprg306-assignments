@@ -1,15 +1,20 @@
-export default function Item({ name, quantity, category }) {
+export default function Item({ item }) {
+  const { name, quantity, category } = item;
+
   return (
-    <li className="flex items-center justify-between rounded-lg bg-white p-4 shadow-sm ring-1 ring-slate-200 transition hover:shadow-md">
+    <li className="flex items-center justify-between px-4 py-3.5 bg-slate-900/90 border border-slate-800 rounded-xl hover:border-slate-700 transition">
       <div>
-        <p className="font-medium text-slate-800">{name}</p>
-        <span className="mt-1 inline-block rounded-full bg-teal-100 px-2 py-0.5 text-xs font-medium text-teal-700">
+        <h2 className="font-semibold text-base text-slate-100 capitalize">
+          {name}
+        </h2>
+        <p className="text-xs font-medium text-slate-400 capitalize mt-0.5">
           {category}
-        </span>
+        </p>
       </div>
-      <span className="rounded-md bg-slate-100 px-2.5 py-1 text-sm font-semibold text-slate-600">
+
+      <div className="flex items-center justify-center min-w-10 h-9 px-3 bg-slate-800/90 border border-slate-700/80 rounded-lg text-sm font-bold text-amber-400">
         x{quantity}
-      </span>
+      </div>
     </li>
   );
 }

@@ -1,18 +1,12 @@
 import StudentInfo from "./student-info";
-import Link from "next/link";
+import BackHome from "../components/backhome";
 
 export default function Page() {
   return (
     <main>
-      <h1 className="title">Shopping List</h1>
-      <section className="flex">
-        <StudentInfo name="Jonathan Wall" githubUsername="jrwall94" />
-        <StudentInfo name="Ebube Vincent" githubUsername="monterovincent" />
-        <StudentInfo name="David Azuka" githubUsername="mrazuka" />
-      </section>
-      <Link href="/" className="hyperlink">
-        Go Home
-      </Link>
+      <h1 className="text-2xl text-amber-500">Shopping List</h1>
+      <StudentInfo />
+      <BackHome />
     </main>
   );
 }

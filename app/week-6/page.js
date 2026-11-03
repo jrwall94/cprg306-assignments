@@ -1,4 +1,5 @@
 import ItemList from "./item-list";
+import BackHome from "../components/backhome";
 
 export const metadata = {
   title: "Shopping List",
@@ -6,13 +7,20 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <main className="min-h-screen bg-slate-50 px-4 py-10 sm:px-8">
-      <section className="mx-auto max-w-3xl">
-        <h1 className="mb-8 text-center text-3xl font-bold tracking-tight text-slate-800">
-          Shopping List
-        </h1>
+    <main className="min-h-screen bg-slate-950 text-slate-100 p-6 flex flex-col items-center">
+      <div className="w-full max-w-md space-y-6">
+        <header className="text-center">
+          <h1 className="text-3xl font-extrabold text-amber-500 tracking-tight">
+            Shopping List
+          </h1>
+        </header>
+
         <ItemList />
-      </section>
+
+        <div className="flex justify-center pt-2">
+          <BackHome />
+        </div>
+      </div>
     </main>
   );
 }
