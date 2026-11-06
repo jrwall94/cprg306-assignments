@@ -3,8 +3,14 @@
 import { useState } from "react";
 import Item from "./item";
 
-export default function ItemList({ items = [] }) {
+export default function ItemList({ items = [], onItemSelect }) {
   const [sortBy, setSortBy] = useState("name");
+  const [selectedItemId, setSelectedItemId] = useState(null);
+
+  const handleSelect = (item) => {
+    setSelectedItemId(item.id);
+    onItemSelect?.(item);
+  };
 
   // 1. Create a sorted copy of the items array
   const sortedItems = [...items].sort((a, b) => {
@@ -73,7 +79,12 @@ export default function ItemList({ items = [] }) {
               </div>
               <ul className="w-full space-y-2.5">
                 {groupByCategory[category].map((item) => (
-                  <Item key={item.id} item={item} />
+                  <Item
+                    key={item.id}
+                    item={item}
+                    onSelect={handleSelect}
+                    isSelected={item.id === selectedItemId}
+                  />
                 ))}
               </ul>
             </div>
@@ -82,7 +93,12 @@ export default function ItemList({ items = [] }) {
       ) : (
         <ul className="w-full space-y-2.5">
           {sortedItems.map((item) => (
-            <Item key={item.id} item={item} />
+            <Item
+              key={item.id}
+              item={item}
+              onSelect={handleSelect}
+              isSelected={item.id === selectedItemId}
+            />
           ))}
         </ul>
       )}
