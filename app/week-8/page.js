@@ -5,7 +5,7 @@ import ItemList from "./item-list";
 import NewItem from "./new-item";
 import itemsData from "./items.json";
 import MealIdeas from "./meal-ideas";
-import BackHome from "../components/backhome";
+import BackHome from "../components/back-home";
 
 export default function Page() {
   const [items, setItems] = useState(itemsData);

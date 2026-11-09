@@ -1,5 +1,5 @@
 import NewItem from "./new-item";
-import BackHome from "../components/backhome";
+import BackHome from "../components/back-home";
 
 export default function Page() {
   return (
