@@ -17,7 +17,10 @@ export default function Page() {
 
   return (
     <div>
-      <button onClick={handleSubmit} className="border-2 p-2 m-5">
+      <button
+        onClick={handleSubmit}
+        className="border-2 p-2 m-5 hover:bg-slate-200  hover:underline active:bg-slate-400"
+      >
         {!user && <p>Login</p>}
         {user && <p>Logout</p>}
       </button>
