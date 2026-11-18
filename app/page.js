@@ -11,6 +11,7 @@ export default function Home() {
       <Assignment week={6} />
       <Assignment week={7} />
       <Assignment week={8} />
+      <Assignment week={9} />
     </main>
   );
 }
