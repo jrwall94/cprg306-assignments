@@ -22,7 +22,7 @@ export default function Page() {
         {user && <p>Logout</p>}
       </button>
       {user && (
-        <div>
+        <div className="ml-5">
           <p>
             Welcome, {user.displayName} ({user.email})
           </p>
@@ -32,6 +32,13 @@ export default function Page() {
           >
             View your shopping list
           </Link>
+          <img
+            src={user.photoURL}
+            alt="GitHub profile picture"
+            height={100}
+            width={100}
+            className="mt-5 border-2"
+          />
         </div>
       )}
     </div>

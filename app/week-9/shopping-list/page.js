@@ -31,9 +31,14 @@ export default function Page() {
       {user && (
         <div className="flex justify-evenly">
           <section className="max-w-2/5">
-            <h1 className="mb-8 text-center text-3xl font-bold tracking-tight text-slate-800">
+            <h1 className="mb-6 text-center text-3xl font-bold tracking-tight text-slate-800">
               Shopping List
             </h1>
+            <Link href={"/week-9"} className="text-blue-600 hover:underline">
+              <p className="text-center">
+                Click here to return to the sign in page
+              </p>
+            </Link>
             <NewItem onAddItem={handleAddItem} />
             <ItemList items={items} onItemSelect={handleItemSelect} />
           </section>
