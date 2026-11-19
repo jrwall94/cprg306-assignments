@@ -6,8 +6,11 @@ import ItemList from "./item-list";
 import MealIdeas from "./meal-ideas";
 import itemsData from "./items.json";
 import Home from "../../home";
+import Link from "next/link";
+import { useUserAuth } from "../_utils/auth-context";
 
 export default function Page() {
+    const { user } = useUserAuth();
     const [items, setItems] = useState(itemsData);
     const [selectedItemName, setSelectedItemName] = useState("");
 
@@ -22,6 +25,21 @@ export default function Page() {
             .trim();
         setSelectedItemName(cleanName);
     };
+
+    if (!user) {
+        return (
+            <main className="min-h-screen bg-slate-50 px-4 py-10 sm:px-8">
+                <section className="mx-auto flex max-w-md flex-col items-center gap-4 rounded-xl bg-white p-8 text-center shadow">
+                    <p className="text-slate-700">
+                        You must be logged in to view the shopping list.
+                    </p>
+                    <Link href="/week-9" className="text-blue-600 hover:underline">
+                        Go to the login page
+                    </Link>
+                </section>
+            </main>
+        );
+    }
 
     return (
         <main className="min-h-screen bg-slate-50 px-4 py-10 sm:px-8">
