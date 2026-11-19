@@ -107,7 +107,7 @@ export default function MealIdeas({ ingredient }) {
           </p>
         </div>
       ) : meals.length > 0 ? (
-        <ul className="space-y-2.5 max-h-[540px] overflow-y-auto pr-1">
+        <ul className="space-y-2.5 max-h-[800px] overflow-y-auto pr-1">
           {meals.map((meal) => (
             <li
               key={meal.idMeal}
@@ -117,7 +117,7 @@ export default function MealIdeas({ ingredient }) {
                 <img
                   src={meal.strMealThumb}
                   alt={meal.strMeal}
-                  className="w-12 h-12 rounded-lg object-cover border border-slate-700 shrink-0"
+                  className="w-20 h-20 rounded-lg object-cover border border-slate-700 shrink-0"
                 />
               )}
               <span className="text-sm font-medium text-slate-100 leading-snug">
