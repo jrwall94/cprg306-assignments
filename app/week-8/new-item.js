@@ -56,10 +56,10 @@ export default function NewItem({ onAddItem }) {
   ];
 
   return (
-    <div className="flex justify-center mt-4 p-4 rounded-full m-auto">
+    <div className="mx-auto mt-4 w-full p-4">
       <form
         onSubmit={handleSubmit}
-        className="flex w-full max-w-lg flex-col items-center rounded-xl border border-indigo-300/15 bg-slate-900/80 p-6 shadow-xl shadow-slate-950/30"
+        className="mx-auto flex w-full max-w-lg items-center justify-center rounded-xl border border-indigo-300/15 bg-slate-900/80 p-6 shadow-xl shadow-slate-950/30"
       >
         <div className="flex flex-col items-center">
           <label htmlFor="itemName" className="text-2xl">
@@ -88,28 +88,33 @@ export default function NewItem({ onAddItem }) {
             ))}
           </select>
         </div>
-        <div className="flex flex-row items-center">
+        <div className="flex flex-col items-center">
+          <div className="flex flex-row items-center">
+            <button
+              type="button"
+              onClick={decrement}
+              disabled={quantity === 1}
+              className="m-2 w-10 rounded-lg border border-indigo-300/20 bg-slate-800 p-2 text-2xl text-teal-200 transition hover:bg-indigo-900 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-300"
+            >
+              -
+            </button>
+            <p className="text-2xl m-2">{quantity}</p>
+            <button
+              type="button"
+              onClick={increment}
+              disabled={quantity === 20}
+              className="m-2 w-10 rounded-lg border border-indigo-300/20 bg-slate-800 p-2 text-2xl text-teal-200 transition hover:bg-indigo-900 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-300"
+            >
+              +
+            </button>
+          </div>
           <button
-            type="button"
-            onClick={decrement}
-            disabled={quantity === 1}
-            className="m-2 w-10 rounded-lg border border-indigo-300/20 bg-slate-800 p-2 text-2xl text-teal-200 transition hover:bg-indigo-900 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-300"
+            type="submit"
+            className="m-2 rounded-lg bg-teal-400 px-5 py-2 font-semibold text-slate-950 transition hover:bg-teal-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-200"
           >
-            -
-          </button>
-          <p className="text-2xl m-2">{quantity}</p>
-          <button
-            type="button"
-            onClick={increment}
-            disabled={quantity === 20}
-            className="m-2 w-10 rounded-lg border border-indigo-300/20 bg-slate-800 p-2 text-2xl text-teal-200 transition hover:bg-indigo-900 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-300"
-          >
-            +
+            Add Item
           </button>
         </div>
-        <button type="submit" className="m-2 rounded-lg bg-teal-400 px-5 py-2 font-semibold text-slate-950 transition hover:bg-teal-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-200">
-          Add Item
-        </button>
       </form>
     </div>
   );

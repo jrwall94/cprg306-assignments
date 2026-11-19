@@ -8,6 +8,7 @@ export default function Page() {
     { week: 6, description: "Sorting and Filtering Lists" },
     {week:7, description: "Managing State"},
     { week: 8, description: "Fetching Data Using an API" },
+    { week: 9, description: "Authentication with Firebase" },
   ];
 
   return (
