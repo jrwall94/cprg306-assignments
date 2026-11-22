@@ -25,7 +25,7 @@ export default function LandingPage() {
           >
             Log Out
           </button>
-          <Link href="/week-9/shopping-list" className="text-blue-600 underline">
+          <Link href="/week-10/shopping-list" className="text-blue-600 underline">
             Go to Shopping List
           </Link>
         </div>
