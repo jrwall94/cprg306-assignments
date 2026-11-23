@@ -4,7 +4,7 @@ import { useState } from "react";
 import NewItem from "./new-item";
 import ItemList from "./item-list";
 import itemsData from "./items.json";
-import Home from "../components/home";
+import Home from "../../components/home";
 import MealIdeas from "./meal-ideas";
 
 function fixItemName(name) {
