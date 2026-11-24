@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Page() {
   const weeks = [2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const currentWeek = 9;
+  const currentWeek = 10;
 
   return (
     <main className="max-w-2xl mx-auto px-6 py-16">
