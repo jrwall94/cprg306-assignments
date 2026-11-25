@@ -26,7 +26,6 @@ export default function NewItem({ onAddItem }) {
       quantity: quantity,
     };
     console.log(item);
-    alert(`Item ${name} Added!`);
     onAddItem({ ...item, id });
     setName("");
     setCategory("Produce");
@@ -82,7 +81,7 @@ export default function NewItem({ onAddItem }) {
             className="m-2 w-3/4 rounded-lg border border-indigo-300/20 bg-slate-950/70 p-2 text-slate-100 focus:border-teal-300 focus:outline-none focus:ring-2 focus:ring-teal-300/30"
           >
             {categoryList.map((cat) => (
-              <option key={cat.label} className="text-black" value={cat.value}>
+              <option key={cat.label} className="text-black bg-amber-50" value={cat.value}>
                 {cat.value}
               </option>
             ))}
