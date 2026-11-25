@@ -27,7 +27,7 @@ export default function MealIdeas({ingredient}) {
     }, [ingredient]);
 
     return (
-        <div className="m-4 rounded-xl border border-indigo-300/15 bg-slate-900/60 p-4 shadow-lg shadow-slate-950/20">
+        <div className="w-full rounded-xl border border-indigo-300/15 bg-slate-900/60 p-4 shadow-lg shadow-slate-950/20">
             <h2 className="text-2xl font-bold mb-4 capitalize text-center">{`Meal Ideas Using ${ingredient}`}</h2>
             <ul>
                 {meals.map((meal) => (

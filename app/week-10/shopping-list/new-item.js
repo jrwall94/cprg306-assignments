@@ -56,10 +56,10 @@ export default function NewItem({ onAddItem }) {
   ];
 
   return (
-    <div className="mx-auto mt-4 w-full p-4">
+    <div className="w-full">
       <form
         onSubmit={handleSubmit}
-        className="mx-auto flex w-full max-w-lg items-center justify-center rounded-xl border border-indigo-300/15 bg-slate-900/80 p-6 shadow-xl shadow-slate-950/30"
+        className="flex w-full items-center justify-center rounded-xl border border-indigo-300/15 bg-slate-900/80 p-6 shadow-xl shadow-slate-950/30"
       >
         <div className="flex flex-col items-center">
           <label htmlFor="itemName" className="text-2xl">

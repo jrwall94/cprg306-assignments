@@ -9,6 +9,7 @@ export default function Page() {
     {week:7, description: "Managing State"},
     { week: 8, description: "Fetching Data Using an API" },
     { week: 9, description: "Authentication with Firebase" },
+    { week: 10, description: "Adding Items to the Shopping List using Firestore" },
   ];
 
   return (
