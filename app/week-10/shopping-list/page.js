@@ -73,9 +73,18 @@ export default function Page() {
   return (
     <main className="mx-auto max-w-6xl p-6">
       <div>
-        <h1 className="flex justify-center text-4xl font-bold tracking-tight text-white">
-          Shopping List
-        </h1>
+        <div className="grid grid-cols-1 items-center gap-4 sm:grid-cols-[1fr_auto_1fr]">
+          <h1 className="text-center text-4xl font-bold tracking-tight text-white sm:col-start-2 sm:row-start-1">
+            Shopping List
+          </h1>
+          <button
+            type="button"
+            onClick={firebaseSignOut}
+            className="justify-self-end rounded-lg bg-teal-400 px-5 py-2 font-semibold text-slate-950 transition hover:bg-teal-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-200 sm:col-start-3 sm:row-start-1"
+          >
+            Sign Out
+          </button>
+        </div>
         <Home />
       </div>
       <div className="mt-6 grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
