@@ -56,13 +56,16 @@ export default function Page() {
           Please sign in to access your shopping list.
         </p>
         <div className="mt-6 flex justify-center">
-          <Link
-            href="/week-10"
-            className="rounded-lg bg-teal-400 px-5 py-2 font-semibold text-slate-950 transition hover:bg-teal-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-200"
-          >
-            Click Here to go to login page
-          </Link>
-      
+          <p>
+            Click
+            <Link
+              href="/week-10"
+              className="inline-flex px-1 font-medium text-teal-300 underline-offset-4 hover:text-teal-100 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-300"
+            >
+              here
+            </Link>
+            to go to the login page
+          </p>
         </div>
         <div className="mt-6 flex justify-center">
           <Home />
