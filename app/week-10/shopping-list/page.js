@@ -7,7 +7,7 @@ import BackHome from "../../components/back-home";
 import NewItem from "./new-item";
 import ItemList from "./item-list";
 import MealIdeas from "./meal-ideas";
-import { getItems, addItem } from "../_services/shopping-list-service";
+import { getItems, addItem, deleteItem } from "../_services/shopping-list-service";
 
 export default function Page() {
   const { user, firebaseSignOut } = useUserAuth();
@@ -57,6 +57,12 @@ export default function Page() {
     }
   };
 
+  const handleDeleteItem = async (itemId) => {
+    if (!user) return;
+    await deleteItem(user.uid, itemId);
+    setItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
+  };
+
   const handleItemSelect = (item) => {
     if (!item || !item.name) return;
     const cleanedName = item.name
@@ -93,7 +99,7 @@ export default function Page() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-7 space-y-6">
             <NewItem onAddItem={handleAddItem} />
-            <ItemList items={items} onItemSelect={handleItemSelect} />
+            <ItemList items={items} onItemSelect={handleItemSelect} onDeleteItem={handleDeleteItem} />
           </div>
 
           <div className="lg:col-span-5 lg:sticky lg:top-8">
