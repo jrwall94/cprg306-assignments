@@ -1,21 +1,43 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NewItem from "./new-item";
 import ItemList from "./item-list";
 import MealIdeas from "./meal-ideas";
-import itemsData from "./items.json";
 import Home from "../../home";
 import Link from "next/link";
 import { useUserAuth } from "../_utils/auth-context";
+import { getItems, addItem } from "../_services/shopping-list-service";
 
 export default function Page() {
     const { user } = useUserAuth();
-    const [items, setItems] = useState(itemsData);
+    const [items, setItems] = useState([]);
     const [selectedItemName, setSelectedItemName] = useState("");
 
-    const handleAddItem = (newItem) => {
-        setItems((prevItems) => [...prevItems, newItem]);
+    useEffect(() => {
+        const loadItems = async () => {
+            try {
+                const userItems = await getItems(user.uid);
+                setItems(userItems);
+            } catch (error) {
+                console.error("Failed to load items:", error);
+            }
+        };
+
+        if (user) {
+            loadItems();
+        }
+    }, [user]);
+
+    const handleAddItem = async (newItem) => {
+        try {
+            // Firestore generates the id, so drop the temporary one from NewItem
+            const { id: _tempId, ...itemData } = newItem;
+            const id = await addItem(user.uid, itemData);
+            setItems((prevItems) => [...prevItems, { id, ...itemData }]);
+        } catch (error) {
+            console.error("Failed to add item:", error);
+        }
     };
 
     const handleItemSelect = (item) => {
@@ -33,7 +55,7 @@ export default function Page() {
                     <p className="text-slate-700">
                         You must be logged in to view the shopping list.
                     </p>
-                    <Link href="/week-9" className="text-blue-600 hover:underline">
+                    <Link href="/week-10" className="text-blue-600 hover:underline">
                         Go to the login page
                     </Link>
                 </section>
