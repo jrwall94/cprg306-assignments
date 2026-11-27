@@ -2,7 +2,6 @@
 
 import { useUserAuth } from "./_utils/auth-context";
 import Link from "next/link";
-import { useEffect } from "react";
 
 export default function Page() {
   // Use the useUserAuth hook to get the user object and the login and logout functions

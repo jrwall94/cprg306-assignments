@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import MealIdeas from "./meal-ideas";
 import { useUserAuth } from "../_utils/auth-context";
 import Link from "next/link";
-import { getItems, addItem } from "../_services/shopping-list-service";
+import { getItems, addItem, deleteItem } from "../_services/shopping-list-service";
 
 export default function Page() {
   const { user } = useUserAuth();
@@ -34,9 +34,17 @@ export default function Page() {
   };
 
   const handleAddItem = async (newItem) => {
-    await addItem({ userId: user.uid, item: newItem });
-    setItems((currentItems) => [...currentItems, newItem]);
+    const itemId = await addItem({ userId: user.uid, item: newItem });
+    setItems((currentItems) => [...currentItems, { ...newItem, id: itemId }]);
   };
+
+  const handleDeleteItem = async (itemId) => {
+    await deleteItem({ userId: user.uid, itemId });
+    setItems((currentItems) =>
+      currentItems.filter((item) => item.id !== itemId),
+    );
+  };
+
   //Check MealIdeas with ingredient.trim(',')[0]
   return (
     <main className="min-h-screen bg-slate-50 px-4 py-10 sm:px-8">
@@ -52,7 +60,11 @@ export default function Page() {
               </p>
             </Link>
             <NewItem onAddItem={handleAddItem} />
-            <ItemList items={items} onItemSelect={handleItemSelect} />
+            <ItemList
+              items={items}
+              onItemSelect={handleItemSelect}
+              onItemDelete={handleDeleteItem}
+            />
           </section>
           <section className="max-w-2/5">
             <h1 className="mb-8 text-center text-3xl font-bold tracking-tight text-slate-800">
